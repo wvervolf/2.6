@@ -9,7 +9,10 @@ public class EmployeeService {
     private final int MaxEmploees = 10;
     private final Map<String, Employee> employees = new HashMap();
 
-    public Employee add(String firstName, String lastName) {
+    public Employee add(String firstName,
+                        String lastName,
+                        int salary,
+                        int departamentId) {
         String key = buildkey(firstName, lastName);
         if(employees.containsKey(key)){
             throw new EmployeeAlreadyAddedException();
@@ -17,7 +20,7 @@ public class EmployeeService {
         if (employees.size() > MaxEmploees) {
             throw new EmployeeStorageIsFullException();
         }
-        Employee employee = new Employee(firstName, lastName);
+        Employee employee = new Employee(firstName, lastName, salary, departamentId);
         employees.put(key, employee);
         return employee;
     }
