@@ -6,7 +6,7 @@ import java.util.*;
 
 @Service
 public class EmployeeService {
-    private final int MaxEmploees = 10;
+    private final int maxEmploees = 10;
     private final Map<String, Employee> employees = new HashMap();
 
     public Employee add(String firstName,
@@ -17,7 +17,7 @@ public class EmployeeService {
         if(employees.containsKey(key)){
             throw new EmployeeAlreadyAddedException();
         }
-        if (employees.size() > MaxEmploees) {
+        if (employees.size() > maxEmploees) {
             throw new EmployeeStorageIsFullException();
         }
         Employee employee = new Employee(firstName, lastName, salary, departamentId);

@@ -30,7 +30,7 @@ public class DepartamentController {
         return departamentService.findEmployeesFromDepartament(departamentId);
     }
     @GetMapping(value = "/all")
-    public Map<Integer, List<Employee>> EmployeesGroupedByDepartament(){
+    public Map<Integer, List<Employee>> employeesGroupedByDepartament(){
         return departamentService.employeesGroupByDepartament();
     }
 }
