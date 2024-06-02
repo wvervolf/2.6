@@ -8,11 +8,17 @@ import java.util.*;
 public class EmployeeService {
     private final int maxEmploees = 10;
     private final Map<String, Employee> employees = new HashMap();
+    private final ValidationService validationService;
+    public EmployeeService(ValidationService validationService) {
+        this.validationService = validationService;
+    }
 
     public Employee add(String firstName,
                         String lastName,
                         int salary,
                         int departamentId) {
+        firstName = validationService.validateCheckName(firstName);
+        lastName = validationService.validateCheckName(lastName);
         String key = buildkey(firstName, lastName);
         if(employees.containsKey(key)){
             throw new EmployeeAlreadyAddedException();
